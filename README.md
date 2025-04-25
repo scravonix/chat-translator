@@ -5,6 +5,7 @@
 **Chat Translator** is a Minecraft mod that enhances your chat experience by integrating real-time translation capabilities using the DeepL API. Whether you're playing on a multilingual server or connecting with friends who speak different languages, this mod allows you to translate chat messages seamlessly, making communication effortless and inclusive.
 
 #### Requirements
+- [DeepL API](https://www.deepl.com/en/pro-api)
 - [Mod Menu](https://modrinth.com/mod/modmenu) (optional)
 
 #### Installation Steps
@@ -36,6 +37,8 @@ The message you want to translate is indicated in purple with [] at the end of e
 Located above the chat bar, this field lets you type text for translation. Press `Enter` to process:
   - Only you can see: `<text> <sourceLang> <targetLang>` (e.g., `Hello EN ES` translates "Hello" from English to Spanish).
   - Sends to chat: `/send <text> <sourceLang> <targetLang>` (e.g., `/send Bonjour FR EN` sends "Hello").
+
+See the languages supported by DeepL, along with their language codes: [Supported Languages](https://developers.deepl.com/docs/getting-started/supported-languages)
 
 ### Multilingual
 
