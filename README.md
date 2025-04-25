@@ -1,46 +1,42 @@
-# Chat Translator
+![Preview](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXZoZXFrejIxMmlwOHdhcmQwNTEwdmpjd3Y1aHl3MXY5eW4zejU2ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Oos9G6aDVRQSkHoEqK/giphy.gif)
 
-Ever wished you could chat with Minecraft players from all over the world without a language barrier? Or maybe impress your friends by sending messages in their native tongue? Say hello to the **Chat Translator**! This neat little mod brings DeepL's top-notch translation services straight into your Minecraft chat. Translate incoming messages with a click or send your own in any supported language—global gaming just got a whole lot more fun!
+# Chat Translator Mod
 
----
+**Chat Translator** is a Minecraft mod that enhances your chat experience by integrating real-time translation capabilities using the DeepL API. Whether you're playing on a multilingual server or connecting with friends who speak different languages, this mod allows you to translate chat messages seamlessly, making communication effortless and inclusive.
 
-## How to Use
+#### Requirements
+- [Mod Menu](https://modrinth.com/mod/modmenu) (optional)
 
-### 1. Setup
-Before you start chatting across borders, you'll need to set things up:
+#### Installation Steps
+1. **Install Fabric Loader**: Download and install it from [fabricmc.net](https://fabricmc.net/use/installer/). When you install, use minimum 0.16.10
+2. **Install Fabric API**: Get it from [Modrinth](https://modrinth.com/mod/fabric-api) and place it in your `mods` folder.
+3. **Download Chat Translator**: Grab the latest JAR file from the [releases page](https://modrinth.com/mod/chat-translator/versions).
+4. **Add to Mods Folder**: Move the JAR file into your Minecraft `mods` folder.
+5. **Launch Minecraft**: Start the game using the Fabric profile.
 
-- **Get a DeepL API Key**: Head to the [DeepL API](https://www.deepl.com/en/pro-api), sign up, and grab your API key.
-- **Open the Config Screen**: Hit the default config key (numpad `+`, or `KP_ADD`) to pop open the settings. If you have Mod Menu, you can also access it via the interface.
-- **Enter Your API Key**: Paste your key in the field and choose if you’re using the free or pro version of DeepL.
-- **Pick Your Language**: Set your preferred language for translations—like `EN` for English or `FR` for French.
-- **Optional Tweaks**: Want to specify the source language manually? Toggle that option and pick a source language too.
+### Configuration
 
-Save your settings, and you’re good to go!
+Access the configuration screen in-game by pressing the default keybind `KP_ADD` (numpad +) or via the Mod Menu if installed.
 
----
+- **API Key**: Enter your DeepL API key here. If a key is already set, it appears masked (e.g., `******`). You can overwrite it with a new key.
+- **Free / Pro**: Toggles between the free and pro DeepL API modes. Free mode has basic features, while pro mode offers enhanced capabilities and higher limits.
+- **Test API Key**: Tests your API key. The result (success or failure) appears in the result field.
+- **Result Field**: Displays the outcome of the API key test (e.g., a translated sample or an error message).
+- **Save**: Saves your settings and closes the configuration screen.
 
-### 2. Translating Incoming Messages
-Chatting with someone in a language you don’t speak? No sweat:
+See messages sent to chat in the language of your choice:
+- **Chat translation**: Sets your preferred language for translations (e.g., "EN" for English, "FR" for French).
+- **Manually set source language**: Toggles whether the source language is manually specified. Shows "Yes" or "No" accordingly.
+- **Source language**: Active only if manual source language is enabled. Selects the language of the text to be translated (e.g., "ES" for Spanish).
 
-- In the chat, look for the **"Translate"** button next to each message (it’s in dark purple).
-- Click it, and the message will instantly translate into your preferred language using DeepL’s magic. Done!
+The message you want to translate is indicated in purple with [] at the end of each message in the chat.
 
----
+### In-Game Usage
 
-### 3. Sending Translated Messages
-Want to reply in their language? Here’s how:
+Located above the chat bar, this field lets you type text for translation. Press `Enter` to process:
+  - Only you can see: `<text> <sourceLang> <targetLang>` (e.g., `Hello EN ES` translates "Hello" from English to Spanish).
+  - Sends to chat: `/send <text> <sourceLang> <targetLang>` (e.g., `/send Bonjour FR EN` sends "Hello").
 
-- Open the chat screen and spot the new **"Translation Input"** field.
-- **Just Translate**: Type your message followed by the source and target language codes in angle brackets. For example:  
-  `"Hello EN FR"` translates "Hello" from English to French and shows you the result.
-- **Translate and Send**: Use the `/send` command like this:  
-  `"/send Hello EN FR"` translates "Hello" to French and sends it straight to the chat.
+### Multilingual
 
-Check the [DeepL Supported Languages](https://developers.deepl.com/docs/getting-started/supported-languages) for a full list of language codes (e.g., `ES` for Spanish, `JA` for Japanese).
-
----
-
-## Notes
-- **Internet Required**: This mod needs an active connection to talk to DeepL’s servers.
-- **Usage Limits**: If you’re on the free DeepL tier, keep an eye on their limits—pro users get more wiggle room.
-- **Multilingual**: As you can see from the [src\main\resources\assets\chattranslator\lang](https://github.com/scravonix/chat-translator/tree/main/src/main/resources/assets/chattranslator/lang) directory, the mod supports 20 languages for now. Whichever language you are using in Minecraft, the texts will automatically change if the language is supported.
+- This mod supports the following languages: Arabic, Azerbaijani, Danish, German, English (US), Spanish (ES & MX), Finnish, French, Hindi, Dutch, Polish, Portuguese (BR), Russian, Swedish, Turkish, Ukrainian, and Chinese (ZH & TW). It will automatically switch to the language you are using in Minecraft.
