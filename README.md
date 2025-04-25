@@ -43,4 +43,4 @@ Check the [DeepL Supported Languages](https://developers.deepl.com/docs/getting-
 ## Notes
 - **Internet Required**: This mod needs an active connection to talk to DeepL’s servers.
 - **Usage Limits**: If you’re on the free DeepL tier, keep an eye on their limits—pro users get more wiggle room.
-- **Multilingual**: As you can see from the src\main\resources\assets\chattranslator\lang directory, the mod supports 20 languages. Whichever language you are using in Minecraft, the texts will automatically change if the language is supported.
+- **Multilingual**: As you can see from the [src\main\resources\assets\chattranslator\lang](https://github.com/scravonix/chat-translator/tree/main/src/main/resources/assets/chattranslator/lang) directory, the mod supports 20 languages. Whichever language you are using in Minecraft, the texts will automatically change if the language is supported.
