@@ -1,0 +1,30 @@
+{
+  "mappings": {
+    "com/chat/translator/mixin/ChatHudMixin": {
+      "addMessage(Lnet/minecraft/text/Text;)V": "Lnet/minecraft/class_338;method_1812(Lnet/minecraft/class_2561;)V"
+    },
+    "com/chat/translator/mixin/ChatScreenMixin": {
+      "init": "Lnet/minecraft/class_408;method_25426()V",
+      "keyPressed(III)Z": "Lnet/minecraft/class_408;method_25404(III)Z",
+      "mouseClicked(DDI)Z": "Lnet/minecraft/class_408;method_25402(DDI)Z"
+    },
+    "com/chat/translator/mixin/ScreenInvoker": {
+      "addDrawableChild": "method_37063(Lnet/minecraft/class_364;)Lnet/minecraft/class_364;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/chat/translator/mixin/ChatHudMixin": {
+        "addMessage(Lnet/minecraft/text/Text;)V": "Lnet/minecraft/class_338;method_1812(Lnet/minecraft/class_2561;)V"
+      },
+      "com/chat/translator/mixin/ChatScreenMixin": {
+        "init": "Lnet/minecraft/class_408;method_25426()V",
+        "keyPressed(III)Z": "Lnet/minecraft/class_408;method_25404(III)Z",
+        "mouseClicked(DDI)Z": "Lnet/minecraft/class_408;method_25402(DDI)Z"
+      },
+      "com/chat/translator/mixin/ScreenInvoker": {
+        "addDrawableChild": "method_37063(Lnet/minecraft/class_364;)Lnet/minecraft/class_364;"
+      }
+    }
+  }
+}
