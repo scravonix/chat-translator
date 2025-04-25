@@ -1,4 +1,4 @@
-# Chat Tranaslator
+# Chat Translator
 
 Ever wished you could chat with Minecraft players from all over the world without a language barrier? Or maybe impress your friends by sending messages in their native tongue? Say hello to the **Chat Translator**! This neat little mod brings DeepL's top-notch translation services straight into your Minecraft chat. Translate incoming messages with a click or send your own in any supported language—global gaming just got a whole lot more fun!
 
