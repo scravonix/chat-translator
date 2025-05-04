@@ -10,7 +10,7 @@
 	"contact": {
 		"homepage": "https://github.com/scravonix"
 	},
-	"license": "MIT",
+	"license": "CUSTOM (check Github page)",
 	"icon": "assets/chattranslator/icon.png",
 	"environment": "client",
 	"entrypoints": {
