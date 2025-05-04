@@ -31,7 +31,6 @@ public class DeepLApi {
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody.toString()))
                 .build();
 
-        // Detailed logging
         System.out.println("=== DeepL API Call Details ===");
         System.out.println("Target Endpoint: " + endpoint);
         System.out.println("Used API Key: " + apiKey);
@@ -42,7 +41,6 @@ public class DeepLApi {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Response logging
         System.out.println("Response Status: " + response.statusCode());
         System.out.println("Response Body: " + response.body());
         System.out.println("Response Headers: " + response.headers().map());
