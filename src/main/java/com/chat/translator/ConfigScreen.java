@@ -37,8 +37,6 @@ public class ConfigScreen extends Screen {
         int x = this.width / 2 - 100;
         int y = this.height / 4;
 
-        // Grup 1: API Anahtarı, Pro/Ücretsiz, Test, Sonuç, Kaydet
-        // API Key Field
         this.apiKeyField = new TextFieldWidget(this.textRenderer, x, y, 200, 20, Text.translatable("chattranslator.config.apiKey"));
         this.actualApiKey = TranslatorMod.config.apiKey;
         this.apiKeyField.setText(this.actualApiKey.isEmpty() ? "" : "******");
@@ -46,7 +44,6 @@ public class ConfigScreen extends Screen {
         this.apiKeyField.setChangedListener(text -> this.actualApiKey = text.equals("******") ? this.actualApiKey : text);
         this.addDrawableChild(this.apiKeyField);
 
-        // Pro/Free Button
         this.proButton = ButtonWidget.builder(
                         Text.translatable(TranslatorMod.config.isPro ? "chattranslator.config.pro" : "chattranslator.config.free"),
                         button -> {
@@ -57,7 +54,6 @@ public class ConfigScreen extends Screen {
                 .build();
         this.addDrawableChild(this.proButton);
 
-        // Test Button
         this.testButton = ButtonWidget.builder(
                         Text.translatable("chattranslator.config.test"),
                         button -> this.resultField.setText(testApiKey(this.actualApiKey.trim(), TranslatorMod.config.isPro)))
@@ -65,13 +61,11 @@ public class ConfigScreen extends Screen {
                 .build();
         this.addDrawableChild(this.testButton);
 
-        // Result Field
         this.resultField = new TextFieldWidget(this.textRenderer, x, y + 90, 200, 20, Text.translatable("chattranslator.config.result"));
         this.resultField.setEditable(false);
         this.resultField.setMaxLength(5000);
         this.addDrawableChild(this.resultField);
 
-        // Save Button
         this.addDrawableChild(ButtonWidget.builder(
                         Text.translatable("chattranslator.config.save"),
                         button -> {
@@ -82,11 +76,8 @@ public class ConfigScreen extends Screen {
                 .dimensions(x, y + 120, 200, 20)
                 .build());
 
-        // Grup 2: Sohbet Çevirisi, Kaynak Dili Manuel Ayarla, Kaynak Dil
-        // Grup 1 ile Grup 2 arasında 50 piksel boşluk
-        int group2Y = y + 170;  // Grup 1'in son widget'ı y + 120, 50 piksel boşluk için y + 170
+        int group2Y = y + 170;
 
-        // Language Selection Button (Sohbet Çevirisi)
         CyclingButtonWidget.Builder<String> builder = new CyclingButtonWidget.Builder<String>(
                 code -> Text.translatable("chattranslator.language." + code)
         );
@@ -99,7 +90,6 @@ public class ConfigScreen extends Screen {
         );
         this.addDrawableChild(languageButton);
 
-        // Manual Source Language Button
         this.manualSourceLanguageButton = ButtonWidget.builder(
                 Text.translatable("chattranslator.config.manual_source_language",
                         TranslatorMod.config.manualSourceLanguage ?
@@ -116,7 +106,6 @@ public class ConfigScreen extends Screen {
         ).dimensions(x, group2Y + 30, 200, 20).build();
         this.addDrawableChild(this.manualSourceLanguageButton);
 
-        // Source Language Selection Button
         this.sourceLanguageButton = CyclingButtonWidget.builder((String code) -> Text.translatable("chattranslator.language." + code))
                 .values(LANGUAGE_LIST)
                 .initially(TranslatorMod.config.sourceLanguage)
