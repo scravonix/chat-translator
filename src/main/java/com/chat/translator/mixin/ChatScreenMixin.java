@@ -24,39 +24,36 @@ import java.util.concurrent.CompletableFuture;
 @Mixin(ChatScreen.class)
 public abstract class ChatScreenMixin {
 	private TextFieldWidget translationField;
-	private TextRenderer textRenderer; // TextRenderer'ı saklamak için
+	private TextRenderer textRenderer;
 
-	@Shadow private TextFieldWidget chatField; // Orijinal sohbet giriş alanına erişim
+	@Shadow private TextFieldWidget chatField;
 
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initTranslationField(CallbackInfo ci) {
 		ChatScreen screen = (ChatScreen) (Object) this;
 		int y = screen.height - 28;
-		textRenderer = screen.getTextRenderer(); // TextRenderer'ı sakla
+		textRenderer = screen.getTextRenderer();
 
-		// Create the translation input field
 		translationField = new TextFieldWidget(
 				textRenderer,
-				50, // Soldan 50 piksel içeride
+				50,
 				y,
-				screen.width - 100, // Sağdan ve soldan toplam 100 piksel kısaltma
+				screen.width - 100,
 				12,
 				Text.translatable("chattranslator.translation.input")
 		) {
 			@Override
 			public void renderWidget(net.minecraft.client.gui.DrawContext context, int mouseX, int mouseY, float delta) {
-				// Arka planı siyah ve %50 opak yap, çerçeve çizimini kaldır
 				if (this.isVisible()) {
-					context.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), 0x80000000); // Siyah, %50 opak
-					context.drawTextWithShadow(textRenderer, getText(), getX() + 4, getY() + (getHeight() - 8) / 2, 0xFFFFFF); // Metni çiz
-					// İmleci manuel olarak çiz
+					context.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), 0x80000000);
+					context.drawTextWithShadow(textRenderer, getText(), getX() + 4, getY() + (getHeight() - 8) / 2, 0xFFFFFF);
 					if (this.isFocused()) {
 						int cursorPos = getCursor();
 						String text = getText();
 						if (cursorPos >= 0 && cursorPos <= text.length()) {
 							int x = getX() + 4 + textRenderer.getWidth(text.substring(0, cursorPos));
 							int y = getY() + (getHeight() - 8) / 2;
-							context.fill(x, y, x + 1, y + 8, 0xFFFFFFFF); // Beyaz imleç
+							context.fill(x, y, x + 1, y + 8, 0xFFFFFFFF);
 						}
 					}
 				}
@@ -64,7 +61,6 @@ public abstract class ChatScreenMixin {
 		};
 		translationField.setMaxLength(256);
 
-		// Add the widget via invoker to bypass protected access
 		((ScreenInvoker) screen).invokeAddDrawableChild(translationField);
 	}
 
@@ -83,29 +79,25 @@ public abstract class ChatScreenMixin {
 				MinecraftClient.getInstance().setScreen(null);
 				cir.setReturnValue(true);
 			} else {
-				// Varsayılan TextFieldWidget klavye işleme mantığını kullan
 				boolean handled = translationField.keyPressed(keyCode, scanCode, modifiers);
 				cir.setReturnValue(handled);
 			}
 		}
-		// translationField odaklanmadıysa varsayılan davranış çalışır
 	}
 
 	@Inject(method = "mouseClicked(DDI)Z", at = @At("HEAD"), cancellable = true)
 	private void onMouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
 		if (translationField != null && chatField != null) {
-			// Çeviri kutusuna tıklama: Odak çeviri kutusuna
 			if (translationField.mouseClicked(mouseX, mouseY, button)) {
 				translationField.setFocused(true);
 				chatField.setFocused(false);
-				((ChatScreen) (Object) this).setFocused(translationField); // Ekran odağını ayarla
+				((ChatScreen) (Object) this).setFocused(translationField);
 				cir.setReturnValue(true);
 			}
-			// Orijinal sohbet kutusuna tıklama: Odak orijinal kutuya
 			else if (chatField.mouseClicked(mouseX, mouseY, button)) {
 				chatField.setFocused(true);
 				translationField.setFocused(false);
-				((ChatScreen) (Object) this).setFocused(chatField); // Ekran odağını ayarla
+				((ChatScreen) (Object) this).setFocused(chatField);
 				cir.setReturnValue(true);
 			}
 		}
@@ -116,8 +108,8 @@ public abstract class ChatScreenMixin {
 			String[] parts = input.substring(6).trim().split(" ");
 			if (parts.length >= 3) {
 				String text = String.join(" ", Arrays.copyOfRange(parts, 0, parts.length - 2));
-				String sourceLang = parts[parts.length - 2].replaceAll("[<>]", ""); // < ve > kaldır
-				String targetLang = parts[parts.length - 1].replaceAll("[<>]", ""); // < ve > kaldır
+				String sourceLang = parts[parts.length - 2].replaceAll("[<>]", "");
+				String targetLang = parts[parts.length - 1].replaceAll("[<>]", "");
 				CompletableFuture.runAsync(() -> {
 					try {
 						String translated = DeepLApi.translate(
@@ -145,8 +137,8 @@ public abstract class ChatScreenMixin {
 			String[] parts = input.trim().split(" ");
 			if (parts.length >= 3) {
 				String text = String.join(" ", Arrays.copyOfRange(parts, 0, parts.length - 2));
-				String sourceLang = parts[parts.length - 2].replaceAll("[<>]", ""); // < ve > kaldır
-				String targetLang = parts[parts.length - 1].replaceAll("[<>]", ""); // < ve > kaldır
+				String sourceLang = parts[parts.length - 2].replaceAll("[<>]", "");
+				String targetLang = parts[parts.length - 1].replaceAll("[<>]", "");
 				CompletableFuture.runAsync(() -> {
 					try {
 						String translated = DeepLApi.translate(
