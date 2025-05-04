@@ -10,11 +10,6 @@ base {
     archivesName = project.mod_id
 }
 
-loom {
-    // If you have an accessWidener file, uncomment and specify its path
-    // accessWidenerPath = file("src/main/resources/chattranslator.accesswidener")
-}
-
 repositories {
     maven {
         name = 'TerraformersMC'
